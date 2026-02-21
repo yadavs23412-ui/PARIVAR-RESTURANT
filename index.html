@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARIVAR - Ghar Jaisa Swad, Saste Daam</title>
+    <meta name="description" content="PARIVAR - Affordable Indian Dhaba serving Paratha, Thali, and Snacks. Owned by Surveer Singh.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Hind+Siliguri:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-orange: #e67e22;
+            --dark-orange: #d35400;
+            --cream-bg: #fdf6e3;
+            --dark-brown: #3e2723;
+            --light-brown: #8d6e63;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(62, 39, 35, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Hind Siliguri', sans-serif;
+            font-weight: 700;
+            color: var(--dark-brown);
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border: 2px solid var(--primary-orange);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary-orange);
+        }
+
+        .section-padding { padding: 80px 0; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--dark-orange);
+        }
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--light-brown);
+            font-size: 1.1rem;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark-orange);
+            font-family: 'Hind Siliguri', sans-serif;
+            letter-spacing: -1px;
+        }
+        .logo span { color: var(--dark-brown); }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--dark-brown);
+        }
+
+        .nav-links a:hover { color: var(--primary-orange); }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-brown);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(62, 39, 35, 0.8), rgba(62, 39, 35, 0.8)), url('https://images.unsplash.com/photo-1517244683847-745431cd4419?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            background: var(--white);
+            text-align: center;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .about h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--primary-orange); }
+
+        /* --- MENU SECTION --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-category {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--primary-orange);
+        }
+
+        .menu-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .menu-category h3 i { color: var(--primary-orange); }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .menu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        .item-details h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+        .item-details p { font-size: 0.85rem; color: var(--light-brown); }
+        
+        .item-price {
+            font-weight: 700;
+            color: var(--dark-orange);
+            font-size: 1.1rem;
+            white-space: nowrap;
+        }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        /* --- CONTACT SECTION --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 { margin-bottom: 20px; font-size: 1.8rem; }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            width: 45px;
+            height: 45px;
+            background: var(--cream-bg);
+            color: var(--primary-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .map-container {
+            height: 100%;
+            min-height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        /* --- FLOATING WHATSAPP --- */
+        .float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+        .float:hover { transform: scale(1.1); background-color: #20b857; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark-brown);
+            color: #bbb;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+        footer p { font-size: 0.9rem; }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            
+            .mobile-menu-btn { display: block; }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 999;
+            }
+
+            .nav-links.active { transform: translateY(0); }
+            .nav-links li { margin: 15px 0; }
+            
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .map-container { height: 300px; order: -1; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">PARIVAR<span>.</span></a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Ghar Jaisa Swad,<br>Saste Daam</h1>
+            <p>Serving fresh, homemade Indian food for students, families, and travelers at affordable prices.</p>
+            <a href="#menu" class="btn">View Menu</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about section-padding">
+        <div class="container about-content">
+            <h2 class="section-title">Welcome to PARIVAR</h2>
+            <p class="section-subtitle">More than just food, it's a feeling.</p>
+            <h3>Owned by Surveer Singh</h3>
+            <p>PARIVAR is dedicated to serving simple, fresh, homemade food with family values at affordable prices. We believe that good food brings people together. Whether you are a student on a budget, a traveler passing by, or a family looking for a hearty meal, you are part of our family.</p>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section id="menu" class="menu section-padding">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            <p class="section-subtitle">Authentic flavors, honest prices.</p>
+
+            <div class="menu-grid">
+                <!-- Paratha Category -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-bread-slice"></i> Paratha & Roti</h3>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Plain Paratha</h4></div>
+                        <span class="item-price">₹15</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Aloo Paratha</h4></div>
+                        <span class="item-price">₹35</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Pyaz Paratha</h4></div>
+                        <span class="item-price">₹35</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Gobhi Paratha</h4></div>
+                        <span class="item-price">₹40</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Paneer Paratha</h4></div>
+                        <span class="item-price">₹50</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Tawa Roti</h4></div>
+                        <span class="item-price">₹5</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Butter Roti</h4></div>
+                        <span class="item-price">₹7</span>
+                    </div>
+                </div>
+
+                <!-- Snacks Category -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-mug-hot"></i> Snacks & Quick Bites</h3>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Tea</h4></div>
+                        <span class="item-price">₹10</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Coffee</h4></div>
+                        <span class="item-price">₹20</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Plain Maggi</h4></div>
+                        <span class="item-price">₹25</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Veg Maggi</h4></div>
+                        <span class="item-price">₹30</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Paneer Maggi</h4></div>
+                        <span class="item-price">₹40</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Egg Maggi</h4></div>
+                        <span class="item-price">₹40</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Poha</h4></div>
+                        <span class="item-price">₹35</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Omelette</h4></div>
+                        <span class="item-price">₹30</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Bread Omelette</h4></div>
+                        <span class="item-price">₹40</span>
+                    </div>
+                </div>
+
+                <!-- Chinese Category -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-bowl-rice"></i> Chinese</h3>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Veg Fried Rice</h4><p>Small / Regular</p></div>
+                        <span class="item-price">₹30 / ₹50</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Paneer Fried Rice</h4><p>Small / Regular</p></div>
+                        <span class="item-price">₹40 / ₹70</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Egg Fried Rice</h4><p>Small / Regular</p></div>
+                        <span class="item-price">₹40 / ₹70</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Veg Noodles</h4><p>Small / Regular</p></div>
+                        <span class="item-price">₹30 / ₹50</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Paneer Noodles</h4><p>Small / Regular</p></div>
+                        <span class="item-price">₹40 / ₹70</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Egg Noodles</h4><p>Small / Regular</p></div>
+                        <span class="item-price">₹40 / ₹70</span>
+                    </div>
+                </div>
+
+                <!-- South Indian & Thali Category -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-utensils"></i> South Indian & Thali</h3>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Idli Sambar (4 pcs)</h4></div>
+                        <span class="item-price">₹40</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Vada Sambar (2 pcs)</h4></div>
+                        <span class="item-price">₹40</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Uttapam</h4></div>
+                        <span class="item-price">₹40</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Veg Thali</h4><p>Dal + Paneer/Veg + 4 Roti + Rice + Salad</p></div>
+                        <span class="item-price">₹60</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details"><h4>Non-Veg Thali</h4><p>Dal + Chicken/Fish/Mutton + 4 Roti + Rice + Salad</p></div>
+                        <span class="item-price">₹80</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="gallery section-padding">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--white);">Gallery</h2>
+            <p class="section-subtitle" style="color: #ddd;">A glimpse of our delicious offerings</p>
+            
+            <div class="gallery-grid">
+                <!-- Using Unsplash placeholders for demo purposes -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paratha">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Thali">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516685018646-549198525c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Noodles">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Curry">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Visit us or order online</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <h4>Owner</h4>
+                            <p>Surveer Singh</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone / WhatsApp</h4>
+                            <p><a href="tel:8879375927">8879375927</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Opening Hours</h4>
+                            <p>Mon - Sun: 8:00 AM - 10:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Near Bus Stand / Main Road, [Your City]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <!-- Google Maps Embed Placeholder -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0123456789!2d77.123456!3d28.654321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM5JzE1LjYiTiA3N8KwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 PARIVAR. All Rights Reserved.</p>
+            <p>Designed for Surveer Singh</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/918879375927" class="float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JAVASCRIPT FOR MOBILE MENU -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
